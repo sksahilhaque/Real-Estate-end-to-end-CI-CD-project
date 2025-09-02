@@ -1,0 +1,40 @@
+name: Real Estate CI/CD
+
+on:
+  push:
+    branches: [ "feature/initial-setup" ]
+  pull_request:
+    branches: [ "feature/initial-setup" ]
+
+env:
+  NODE_VERSION: '22'
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+    
+
+jobs:
+  compile:
+    runs-on: Agent-1
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Node.js setup
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+    - name: Run ESLint
+      run: npm run lint
+    - name: Run Prettier check
+      run: npx prettier --check .
+    - name: Type checking
+      run: npm run type-check
+    - name: Security audit
+      run: npm audit --audit-level=high
+    - name: Run tests
+      run: npm test
