@@ -1,11 +1,11 @@
-"use client";
-import { useState } from "react";
-import PropertyCard from "../components/PropertyCard";
-import PropertyFilters from "../components/PropertyFilters";
-import { properties } from "../data/sampleData";
+'use client'
+import { useState } from 'react'
+import PropertyCard from '../components/PropertyCard'
+import PropertyFilters from '../components/PropertyFilters'
+import { properties } from '../data/sampleData'
 
 export default function Properties() {
-  const [filteredProperties, setFilteredProperties] = useState(properties);
+  const [filteredProperties] = useState(properties)
 
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
@@ -28,5 +28,5 @@ export default function Properties() {
         </div>
       </div>
     </div>
-  );
+  )
 }

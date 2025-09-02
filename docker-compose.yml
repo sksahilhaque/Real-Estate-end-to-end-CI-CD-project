@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  premium-realty:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: premium-realty:latest
+    ports:
+      - '3000' # Hiding the port 3000 from the outside world
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - NEXT_TELEMETRY_DISABLED=1
+    restart: unless-stopped
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - '80:80' # Website only accecible on port locathost:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - premium-realty
+    restart: unless-stopped

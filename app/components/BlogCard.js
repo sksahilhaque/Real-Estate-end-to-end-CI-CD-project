@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { Calendar, User, Tag } from "lucide-react";
+import Link from 'next/link'
+import { Calendar, User } from 'lucide-react'
 
 export default function BlogCard({ post }) {
   return (
@@ -45,5 +45,5 @@ export default function BlogCard({ post }) {
         </div>
       </div>
     </article>
-  );
+  )
 }

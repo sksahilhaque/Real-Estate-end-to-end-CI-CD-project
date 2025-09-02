@@ -1,36 +1,36 @@
-import { Users, Award, Home, Heart } from "lucide-react";
+import { Users, Award, Home, Heart } from 'lucide-react'
 
 export default function About() {
   const team = [
     {
-      name: "Sarah Johnson",
-      role: "CEO & Founder",
+      name: 'Sarah Johnson',
+      role: 'CEO & Founder',
       image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
-      bio: "15+ years in luxury real estate",
+        'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face',
+      bio: '15+ years in luxury real estate',
     },
     {
-      name: "Michael Chen",
-      role: "Senior Agent",
+      name: 'Michael Chen',
+      role: 'Senior Agent',
       image:
-        "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&crop=face",
-      bio: "Specialist in commercial properties",
+        'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&crop=face',
+      bio: 'Specialist in commercial properties',
     },
     {
-      name: "Emma Davis",
-      role: "Marketing Director",
+      name: 'Emma Davis',
+      role: 'Marketing Director',
       image:
-        "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
-      bio: "Expert in digital marketing strategies",
+        'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face',
+      bio: 'Expert in digital marketing strategies',
     },
-  ];
+  ]
 
   const stats = [
-    { icon: Home, label: "Properties Sold", value: "1,200+" },
-    { icon: Users, label: "Happy Clients", value: "800+" },
-    { icon: Award, label: "Awards Won", value: "25+" },
-    { icon: Heart, label: "Years Experience", value: "15+" },
-  ];
+    { icon: Home, label: 'Properties Sold', value: '1,200+' },
+    { icon: Users, label: 'Happy Clients', value: '800+' },
+    { icon: Award, label: 'Awards Won', value: '25+' },
+    { icon: Heart, label: 'Years Experience', value: '15+' },
+  ]
 
   return (
     <div className="min-h-screen bg-white pt-20">
@@ -39,8 +39,9 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold mb-6">About Premium Realty</h1>
           <p className="text-xl max-w-3xl mx-auto">
-            We're more than just a real estate company. We're your partners in
-            finding the perfect home and making your property dreams come true.
+            We&apos;re more than just a real estate company. We&apos;re your
+            partners in finding the perfect home and making your property dreams
+            come true.
           </p>
         </div>
       </section>
@@ -82,8 +83,8 @@ export default function About() {
                 Our success is built on three pillars: exceptional service, deep
                 market knowledge, and unwavering commitment to our clients. We
                 believe that buying or selling a home is one of life's most
-                important decisions, and we're here to guide you every step of
-                the way.
+                important decisions, and we&apos;re here to guide you every step
+                of the way.
               </p>
             </div>
             <div className="relative">
@@ -134,5 +135,5 @@ export default function About() {
         </div>
       </section>
     </div>
-  );
+  )
 }

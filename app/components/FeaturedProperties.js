@@ -1,51 +1,58 @@
-"use client";
-import { useState, useEffect, useRef } from "react";
-import PropertyCard from "./PropertyCard";
-import { properties } from "../data/sampleData";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+'use client'
+import { useState, useEffect, useRef } from 'react'
+import PropertyCard from './PropertyCard'
+import { properties } from '../data/sampleData'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 export default function FeaturedProperties() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const scrollRef = useRef(null);
-  const featuredProperties = properties.filter((p) => p.featured);
-  const itemsPerView = { mobile: 1, tablet: 2, desktop: 3 };
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isHovered, setIsHovered] = useState(false)
+  const scrollRef = useRef(null)
+  const featuredProperties = properties.filter((p) => p.featured)
+  const itemsPerView = { mobile: 1, tablet: 2, desktop: 3 }
 
   const getItemsPerView = () => {
     if (typeof window !== 'undefined') {
-      if (window.innerWidth < 768) return itemsPerView.mobile;
-      if (window.innerWidth < 1024) return itemsPerView.tablet;
+      if (window.innerWidth < 768) return itemsPerView.mobile
+      if (window.innerWidth < 1024) return itemsPerView.tablet
     }
-    return itemsPerView.desktop;
-  };
+    return itemsPerView.desktop
+  }
 
-  const [currentItemsPerView, setCurrentItemsPerView] = useState(getItemsPerView());
+  const [currentItemsPerView, setCurrentItemsPerView] =
+    useState(getItemsPerView())
 
   const nextSlide = () => {
-    const maxIndex = Math.max(0, featuredProperties.length - currentItemsPerView);
-    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-  };
+    const maxIndex = Math.max(
+      0,
+      featuredProperties.length - currentItemsPerView
+    )
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1))
+  }
 
   const prevSlide = () => {
-    const maxIndex = Math.max(0, featuredProperties.length - currentItemsPerView);
-    setCurrentIndex((prev) => (prev === 0 ? maxIndex : prev - 1));
-  };
+    const maxIndex = Math.max(
+      0,
+      featuredProperties.length - currentItemsPerView
+    )
+    setCurrentIndex((prev) => (prev === 0 ? maxIndex : prev - 1))
+  }
 
   useEffect(() => {
     const handleResize = () => {
-      setCurrentItemsPerView(getItemsPerView());
-    };
-    
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+      setCurrentItemsPerView(getItemsPerView())
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   useEffect(() => {
     if (!isHovered) {
-      const timer = setInterval(nextSlide, 5000);
-      return () => clearInterval(timer);
+      const timer = setInterval(nextSlide, 5000)
+      return () => clearInterval(timer)
     }
-  }, [isHovered, currentItemsPerView]);
+  }, [isHovered, currentItemsPerView])
 
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
@@ -63,7 +70,7 @@ export default function FeaturedProperties() {
           </p>
         </div>
 
-        <div 
+        <div
           className="relative group"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
@@ -104,12 +111,17 @@ export default function FeaturedProperties() {
 
           {/* Dots Indicator */}
           <div className="flex justify-center mt-8 space-x-2">
-            {Array.from({ length: Math.max(1, featuredProperties.length - currentItemsPerView + 1) }).map((_, index) => (
+            {Array.from({
+              length: Math.max(
+                1,
+                featuredProperties.length - currentItemsPerView + 1
+              ),
+            }).map((_, idx) => (
               <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
+                key={idx}
+                onClick={() => setCurrentIndex(idx)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex
+                  idx === currentIndex
                     ? 'bg-primary-600 w-8'
                     : 'bg-gray-300 hover:bg-gray-400'
                 }`}
@@ -126,5 +138,5 @@ export default function FeaturedProperties() {
         </div>
       </div>
     </section>
-  );
+  )
 }

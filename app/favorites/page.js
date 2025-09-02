@@ -1,12 +1,12 @@
-"use client";
-import { useState } from "react";
-import PropertyCard from "../components/PropertyCard";
-import { Heart, Compare } from "lucide-react";
+'use client'
+import { useState } from 'react'
+import Link from 'next/link'
+import { Heart, GitCompare } from 'lucide-react'
 
 export default function Favorites() {
   // Simulated favorites and compare lists
-  const [favorites] = useState([]);
-  const [compareList] = useState([]);
+  const [favorites] = useState([])
+  const [compareList] = useState([])
 
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
@@ -27,7 +27,7 @@ export default function Favorites() {
             Favorites ({favorites.length})
           </button>
           <button className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-300">
-            <Compare className="w-4 h-4 inline mr-2" />
+            <GitCompare className="w-4 h-4 inline mr-2" />
             Compare ({compareList.length})
           </button>
         </div>
@@ -48,5 +48,5 @@ export default function Favorites() {
         </div>
       </div>
     </div>
-  );
+  )
 }

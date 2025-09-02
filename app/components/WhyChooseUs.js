@@ -1,32 +1,32 @@
-import { Award, Users, Clock, Shield } from "lucide-react";
+import { Award, Users, Clock, Shield } from 'lucide-react'
 
 export default function WhyChooseUs() {
   const features = [
     {
       icon: Award,
-      title: "Award-Winning Service",
+      title: 'Award-Winning Service',
       description:
-        "Recognized for excellence in luxury real estate with multiple industry awards.",
+        'Recognized for excellence in luxury real estate with multiple industry awards.',
     },
     {
       icon: Users,
-      title: "Expert Team",
+      title: 'Expert Team',
       description:
-        "Our experienced agents have deep knowledge of local markets and trends.",
+        'Our experienced agents have deep knowledge of local markets and trends.',
     },
     {
       icon: Clock,
-      title: "24/7 Support",
+      title: '24/7 Support',
       description:
-        "Round-the-clock assistance for all your real estate needs and inquiries.",
+        'Round-the-clock assistance for all your real estate needs and inquiries.',
     },
     {
       icon: Shield,
-      title: "Trusted & Secure",
+      title: 'Trusted & Secure',
       description:
-        "Transparent processes and secure transactions for your peace of mind.",
+        'Transparent processes and secure transactions for your peace of mind.',
     },
-  ];
+  ]
 
   return (
     <section className="py-16 bg-white">
@@ -36,8 +36,8 @@ export default function WhyChooseUs() {
             Why Choose Premium Realty?
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            We're committed to providing exceptional service and helping you
-            achieve your real estate goals.
+            We&apos;re committed to providing exceptional service and helping
+            you achieve your real estate goals.
           </p>
         </div>
 
@@ -58,5 +58,5 @@ export default function WhyChooseUs() {
         </div>
       </div>
     </section>
-  );
+  )
 }
