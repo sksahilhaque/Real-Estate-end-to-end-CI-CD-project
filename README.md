@@ -139,3 +139,5 @@ For a production version, consider adding:
 - Real map integration (Google Maps API)
 - Search functionality
 - Property management system
+
+# Test staging deployment
