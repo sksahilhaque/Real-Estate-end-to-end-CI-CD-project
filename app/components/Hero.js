@@ -1,37 +1,37 @@
-"use client";
-import { useState, useEffect } from "react";
-import { ChevronRight, Play } from "lucide-react";
+'use client'
+import { useState, useEffect } from 'react'
+import { ChevronRight, Play } from 'lucide-react'
 
 export default function Hero() {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0)
 
   const slides = [
     {
       image:
-        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&h=1080&fit=crop",
-      title: "Find Your Dream Home",
-      subtitle: "Luxury properties in prime locations",
+        'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&h=1080&fit=crop',
+      title: 'Find Your Dream Home',
+      subtitle: 'Luxury properties in prime locations',
     },
     {
       image:
-        "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1920&h=1080&fit=crop",
-      title: "Modern Living Spaces",
-      subtitle: "Contemporary homes for modern lifestyles",
+        'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1920&h=1080&fit=crop',
+      title: 'Modern Living Spaces',
+      subtitle: 'Contemporary homes for modern lifestyles',
     },
     {
       image:
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop",
-      title: "Investment Opportunities",
-      subtitle: "Premium properties with excellent ROI",
+        'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop',
+      title: 'Investment Opportunities',
+      subtitle: 'Premium properties with excellent ROI',
     },
-  ];
+  ]
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [slides.length]);
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [slides.length])
 
   return (
     <section className="relative h-screen overflow-hidden">
@@ -40,7 +40,7 @@ export default function Hero() {
         <div
           key={index}
           className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? "opacity-100" : "opacity-0"
+            index === currentSlide ? 'opacity-100' : 'opacity-0'
           }`}
         >
           <div
@@ -80,11 +80,11 @@ export default function Hero() {
             key={index}
             onClick={() => setCurrentSlide(index)}
             className={`w-3 h-3 rounded-full transition-colors ${
-              index === currentSlide ? "bg-white" : "bg-white/50"
+              index === currentSlide ? 'bg-white' : 'bg-white/50'
             }`}
           />
         ))}
       </div>
     </section>
-  );
+  )
 }

@@ -1,5 +1,5 @@
-import { blogPosts } from "../data/sampleData";
-import BlogCard from "../components/BlogCard";
+import { blogPosts } from '../data/sampleData'
+import BlogCard from '../components/BlogCard'
 
 export default function Blog() {
   return (
@@ -22,5 +22,5 @@ export default function Blog() {
         </div>
       </div>
     </div>
-  );
+  )
 }

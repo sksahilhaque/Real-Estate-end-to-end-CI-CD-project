@@ -1,20 +1,20 @@
-"use client";
-import { useState } from "react";
-import { X, Phone, Mail } from "lucide-react";
+'use client'
+import { useState } from 'react'
+import { X, Phone, Mail } from 'lucide-react'
 
 export default function ContactModal({ property, onClose }) {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
+    name: '',
+    email: '',
+    phone: '',
     message: `I'm interested in ${property.title}`,
-  });
+  })
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Thank you for your interest! Our agent will contact you soon.");
-    onClose();
-  };
+    e.preventDefault()
+    alert('Thank you for your interest! Our agent will contact you soon.')
+    onClose()
+  }
 
   return (
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
@@ -119,5 +119,5 @@ export default function ContactModal({ property, onClose }) {
         </form>
       </div>
     </div>
-  );
+  )
 }

@@ -1,14 +1,14 @@
-import "./globals.css";
-import { Inter } from "next/font/google";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import './globals.css'
+import { Inter } from 'next/font/google'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: "Premium Realty - Luxury Real Estate",
-  description: "Find your dream home with Premium Realty",
-};
+  title: 'Premium Realty - Luxury Real Estate',
+  description: 'Find your dream home with Premium Realty',
+}
 
 export default function RootLayout({ children }) {
   return (
@@ -19,5 +19,5 @@ export default function RootLayout({ children }) {
         <Footer />
       </body>
     </html>
-  );
+  )
 }

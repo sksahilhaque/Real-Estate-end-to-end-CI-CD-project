@@ -1,18 +1,18 @@
-"use client";
-import { useState } from "react";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+'use client'
+import { useState } from 'react'
+import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 
 export default function PropertyGallery({ images }) {
-  const [currentImage, setCurrentImage] = useState(0);
-  const [showLightbox, setShowLightbox] = useState(false);
+  const [currentImage, setCurrentImage] = useState(0)
+  const [showLightbox, setShowLightbox] = useState(false)
 
   const nextImage = () => {
-    setCurrentImage((prev) => (prev + 1) % images.length);
-  };
+    setCurrentImage((prev) => (prev + 1) % images.length)
+  }
 
   const prevImage = () => {
-    setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
-  };
+    setCurrentImage((prev) => (prev - 1 + images.length) % images.length)
+  }
 
   return (
     <>
@@ -48,7 +48,7 @@ export default function PropertyGallery({ images }) {
                 key={index}
                 onClick={() => setCurrentImage(index)}
                 className={`w-3 h-3 rounded-full transition-colors ${
-                  index === currentImage ? "bg-white" : "bg-white/50"
+                  index === currentImage ? 'bg-white' : 'bg-white/50'
                 }`}
               />
             ))}
@@ -65,8 +65,8 @@ export default function PropertyGallery({ images }) {
                 alt={`Property ${index + 1}`}
                 className={`w-20 h-20 object-cover rounded-lg cursor-pointer transition-opacity ${
                   index === currentImage
-                    ? "opacity-100 ring-2 ring-primary-500"
-                    : "opacity-70 hover:opacity-100"
+                    ? 'opacity-100 ring-2 ring-primary-500'
+                    : 'opacity-70 hover:opacity-100'
                 }`}
                 onClick={() => setCurrentImage(index)}
               />
@@ -112,5 +112,5 @@ export default function PropertyGallery({ images }) {
         </div>
       )}
     </>
-  );
+  )
 }

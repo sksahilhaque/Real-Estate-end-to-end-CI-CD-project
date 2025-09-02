@@ -1,19 +1,19 @@
-"use client";
-import { useState } from "react";
-import { Search, MapPin, DollarSign, Home, ChevronDown } from "lucide-react";
+'use client'
+import { useState } from 'react'
+import { Search, MapPin, DollarSign, Home, ChevronDown } from 'lucide-react'
 
 export default function QuickSearch() {
   const [searchData, setSearchData] = useState({
-    location: "",
-    priceRange: "",
-    propertyType: "",
-    keywords: "",
-  });
+    location: '',
+    priceRange: '',
+    propertyType: '',
+    keywords: '',
+  })
 
   const handleSearch = (e) => {
-    e.preventDefault();
-    alert("Search functionality would be implemented with backend integration");
-  };
+    e.preventDefault()
+    alert('Search functionality would be implemented with backend integration')
+  }
 
   return (
     <section className="bg-white py-16 -mt-16 relative z-20">
@@ -61,7 +61,10 @@ export default function QuickSearch() {
                     className="w-full pl-12 pr-12 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:bg-white focus:border-primary-500 focus:ring-4 focus:ring-primary-100 transition-all duration-200 appearance-none cursor-pointer hover:border-gray-300 text-gray-700 font-medium"
                     value={searchData.priceRange}
                     onChange={(e) =>
-                      setSearchData({ ...searchData, priceRange: e.target.value })
+                      setSearchData({
+                        ...searchData,
+                        priceRange: e.target.value,
+                      })
                     }
                   >
                     <option value="">Select budget</option>
@@ -131,5 +134,5 @@ export default function QuickSearch() {
         </div>
       </div>
     </section>
-  );
+  )
 }

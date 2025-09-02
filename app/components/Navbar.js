@@ -1,20 +1,20 @@
-"use client";
-import { useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Menu, X, Home } from "lucide-react";
+'use client'
+import { useState } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { Menu, X, Home } from 'lucide-react'
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
 
   const navigation = [
-    { name: "Home", href: "/" },
-    { name: "Properties", href: "/properties" },
-    { name: "About", href: "/about" },
-    { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/contact" },
-  ];
+    { name: 'Home', href: '/' },
+    { name: 'Properties', href: '/properties' },
+    { name: 'About', href: '/about' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Contact', href: '/contact' },
+  ]
 
   return (
     <nav className="bg-white shadow-lg fixed w-full top-0 z-50">
@@ -36,8 +36,8 @@ export default function Navbar() {
                 href={item.href}
                 className={`${
                   pathname === item.href
-                    ? "text-primary-600 border-b-2 border-primary-600"
-                    : "text-gray-700 hover:text-primary-600"
+                    ? 'text-primary-600 border-b-2 border-primary-600'
+                    : 'text-gray-700 hover:text-primary-600'
                 } px-3 py-2 text-sm font-medium transition-colors duration-200`}
               >
                 {item.name}
@@ -70,8 +70,8 @@ export default function Navbar() {
                   href={item.href}
                   className={`${
                     pathname === item.href
-                      ? "text-primary-600 bg-primary-50"
-                      : "text-gray-700 hover:text-primary-600 hover:bg-gray-50"
+                      ? 'text-primary-600 bg-primary-50'
+                      : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
                   } block px-3 py-2 text-base font-medium rounded-md transition-colors duration-200`}
                   onClick={() => setIsOpen(false)}
                 >
@@ -83,5 +83,5 @@ export default function Navbar() {
         )}
       </div>
     </nav>
-  );
+  )
 }

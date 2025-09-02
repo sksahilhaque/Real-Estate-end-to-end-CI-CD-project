@@ -1,17 +1,17 @@
-"use client";
-import { useState } from "react";
-import { notFound } from "next/navigation";
-import { properties } from "../../data/sampleData";
-import PropertyGallery from "../../components/PropertyGallery";
-import ContactModal from "../../components/ContactModal";
-import { MapPin, Bed, Bath, Square, Calendar } from "lucide-react";
+'use client'
+import { useState } from 'react'
+import { notFound } from 'next/navigation'
+import { properties } from '../../data/sampleData'
+import PropertyGallery from '../../components/PropertyGallery'
+import ContactModal from '../../components/ContactModal'
+import { MapPin, Bed, Bath, Square, Calendar } from 'lucide-react'
 
 export default function PropertyDetail({ params }) {
-  const [showContactModal, setShowContactModal] = useState(false);
-  const property = properties.find((p) => p.id === parseInt(params.id));
+  const [showContactModal, setShowContactModal] = useState(false)
+  const property = properties.find((p) => p.id === parseInt(params.id))
 
   if (!property) {
-    notFound();
+    notFound()
   }
 
   return (
@@ -121,5 +121,5 @@ export default function PropertyDetail({ params }) {
         />
       )}
     </div>
-  );
+  )
 }

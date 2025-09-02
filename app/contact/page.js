@@ -1,20 +1,20 @@
-"use client";
-import { useState } from "react";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+'use client'
+import { useState } from 'react'
+import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  })
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Thank you for your message! We will get back to you soon.");
-    setFormData({ name: "", email: "", phone: "", message: "" });
-  };
+    e.preventDefault()
+    alert('Thank you for your message! We will get back to you soon.')
+    setFormData({ name: '', email: '', phone: '', message: '' })
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
@@ -148,5 +148,5 @@ export default function Contact() {
         </div>
       </div>
     </div>
-  );
+  )
 }

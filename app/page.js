@@ -1,7 +1,7 @@
-import Hero from "./components/Hero";
-import FeaturedProperties from "./components/FeaturedProperties";
-import QuickSearch from "./components/QuickSearch";
-import WhyChooseUs from "./components/WhyChooseUs";
+import Hero from './components/Hero'
+import FeaturedProperties from './components/FeaturedProperties'
+import QuickSearch from './components/QuickSearch'
+import WhyChooseUs from './components/WhyChooseUs'
 
 export default function Home() {
   return (
@@ -11,5 +11,5 @@ export default function Home() {
       <FeaturedProperties />
       <WhyChooseUs />
     </div>
-  );
+  )
 }
