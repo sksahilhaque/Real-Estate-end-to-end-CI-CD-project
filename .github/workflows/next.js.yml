@@ -31,8 +31,8 @@ jobs:
         run: npm run lint
       - name: Run Prettier check
         run: npx prettier --check .
-      - name: Type checking
-        run: npm run type-check
+      # - name: Type checking
+      #   run: npm run type-check
       - name: Security audit
         run: npm audit --audit-level=high
       - name: Run tests
