@@ -96,13 +96,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Install Docker
-        run: |
-          curl -fsSL https://get.docker.com -o get-docker.sh
-          sudo sh get-docker.sh
-          sudo usermod -aG docker $USER
-          sudo systemctl start docker
-          sudo systemctl enable docker
 
       - name: Start Docker service
         run: |
@@ -132,15 +125,7 @@ jobs:
             type=raw,value=latest,enable={{is_default_branch}}
 
       - name: Build and push Docker image
-        run: |
-          sudo docker buildx build \
-            --platform linux/amd64,linux/arm64 \
-            --push \
-            --network host \
-            --build-arg NEXT_TELEMETRY_DISABLED=1 \
-            --tag ${{ steps.meta.outputs.tags }} \
-            --label "${{ steps.meta.outputs.labels }}" \
-            .
+        run: sudo docker buildx build --platform linux/amd64,linux/arm64 --push --network host --build-arg NEXT_TELEMETRY_DISABLED=1 --tag ${{ steps.meta.outputs.tags }} --label "${{ steps.meta.outputs.labels }}" .
 
   deploy-staging:
     needs: docker-build-push
