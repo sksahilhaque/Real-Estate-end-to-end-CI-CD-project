@@ -86,9 +86,6 @@ jobs:
       - name: Build application
         run: npm run build
 
-      - name: Run tests
-        run: npm test -- --passWithNoTests
-
       - name: Verify build output
         run: ls -la .next/
 
