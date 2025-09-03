@@ -126,12 +126,13 @@ jobs:
 
       - name: Build and push Docker image
         run: |
+          TAG="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}"
           sudo docker buildx build \
             --platform linux/amd64,linux/arm64 \
             --push \
             --network host \
             --build-arg NEXT_TELEMETRY_DISABLED=1 \
-            --tag ${{ steps.meta.outputs.tags }} \
+            --tag "$TAG" \
             .
 
   deploy-staging:
