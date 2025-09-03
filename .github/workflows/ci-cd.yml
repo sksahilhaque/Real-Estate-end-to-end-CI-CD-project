@@ -141,3 +141,14 @@ jobs:
         run: |
           echo "Deploying to staging environment"
           # kubectl apply commands would go here
+
+  # Deploy to Production
+  deploy-production:
+    needs: docker-build-push
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Deploy to production
+        run: |
+          echo "Deploying to production environment"
+          # kubectl apply commands would go here
