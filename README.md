@@ -1,6 +1,6 @@
 # Premium Realty - Modern Real Estate Website
 
-A modern, responsive real estate website built with Next.js, React, and Tailwind CSS.
+A modern, responsive real estate website built with Next.js, React, and Tailwind CSS with complete CI/CD pipeline and containerized deployment.
 
 ## Features
 
@@ -12,45 +12,6 @@ A modern, responsive real estate website built with Next.js, React, and Tailwind
 - **Contact**: Contact form and map placeholder
 - **Blog**: Real estate articles and insights
 - **Responsive Design**: Mobile-first approach with Tailwind CSS
-
-## Project Structure
-
-```
-premium-realty/
-├── app/
-│   ├── components/
-│   │   ├── Navbar.js
-│   │   ├── Footer.js
-│   │   ├── Hero.js
-│   │   ├── PropertyCard.js
-│   │   ├── PropertyFilters.js
-│   │   ├── PropertyGallery.js
-│   │   ├── ContactModal.js
-│   │   ├── FeaturedProperties.js
-│   │   ├── QuickSearch.js
-│   │   ├── WhyChooseUs.js
-│   │   └── BlogCard.js
-│   ├── data/
-│   │   └── sampleData.js
-│   ├── properties/
-│   │   ├── page.js
-│   │   └── [id]/page.js
-│   ├── about/
-│   │   └── page.js
-│   ├── contact/
-│   │   └── page.js
-│   ├── blog/
-│   │   └── page.js
-│   ├── favorites/
-│   │   └── page.js
-│   ├── layout.js
-│   ├── page.js
-│   └── globals.css
-├── package.json
-├── tailwind.config.js
-├── postcss.config.js
-└── next.config.js
-```
 
 ## Getting Started
 
@@ -68,48 +29,24 @@ npm run dev
 
 3. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Sample Data
-
-The website uses static sample data for demonstration purposes:
-
-- 6 sample properties with images, details, and agent information
-- 6 blog posts with categories and content
-- Team member information
-- All data is stored in `app/data/sampleData.js`
-
-## Key Features Implemented
-
-### Design & UX
-
-- Modern, clean design with blue/white/gray color scheme
-- Smooth animations and hover effects
-- Mobile-responsive layout
-- Professional typography using Inter font
-
-### Functionality (UI Only)
-
-- Property search filters (static UI)
-- Image galleries with lightbox
-- Favorites and compare functionality (local state)
-- Contact forms (non-functional, shows alerts)
-- Property carousel on homepage
-- Responsive navigation with mobile menu
-
-### Components
-
-- Reusable property cards
-- Modal components for contact forms
-- Image gallery with navigation
-- Filter components
-- Blog article cards
-
 ## Technologies Used
+
+### Frontend
 
 - **Next.js 14**: React framework with App Router
 - **React 18**: Component library
 - **Tailwind CSS**: Utility-first CSS framework
 - **Lucide React**: Icon library
 - **JavaScript**: ES6+ features
+
+### DevOps & Infrastructure
+
+- **Docker**: Containerization with multi-stage builds
+- **GitHub Actions**: CI/CD pipeline automation
+- **GitHub Container Registry (GHCR)**: Docker image storage
+- **Nginx**: Reverse proxy and web server
+- **Docker Compose**: Multi-container orchestration
+- **AWS EC2**: Cloud deployment platform
 
 ## Customization
 
@@ -125,19 +62,152 @@ Modify `tailwind.config.js` for custom colors, animations, and design tokens.
 
 All components are in `app/components/` and can be easily modified or extended.
 
-## Production Considerations
+## CI/CD Pipeline
 
-For a production version, consider adding:
+The project includes a complete CI/CD pipeline with the following stages:
 
-- Backend API integration
-- Database for properties and user data
-- User authentication
-- Payment processing
-- SEO optimization
-- Performance monitoring
-- Form validation
-- Real map integration (Google Maps API)
-- Search functionality
-- Property management system
+### 1. Quality Checks
 
-# Test staging deployment
+- **ESLint**: Code linting and style enforcement
+- **Prettier**: Code formatting validation
+- **TypeScript**: Type checking
+- **Security Audit**: npm vulnerability scanning
+
+### 2. Security Scanning
+
+- **Trivy**: Vulnerability scanner for filesystem and dependencies
+- **SAST**: Static Application Security Testing
+
+### 3. Build & Test
+
+- **Next.js Build**: Production build verification
+- **Caching**: Optimized build caching for faster CI/CD
+
+### 4. Containerization
+
+- **Docker Build**: Multi-stage Docker image creation
+- **Image Push**: Automated push to GitHub Container Registry
+- **Image Testing**: Automated container functionality testing
+
+### 5. Deployment
+
+- **Staging**: Automatic deployment to staging environment (develop branch)
+- **Production**: Manual deployment to production (main branch)
+
+## Docker Setup
+
+### Multi-Stage Dockerfile
+
+- **Builder Stage**: Node.js 18 Alpine for building the application
+- **Runtime Stage**: Optimized production image with non-root user
+- **Security**: Follows Docker security best practices
+
+### Docker Compose Configuration
+
+```yaml
+services:
+  premium-realty:
+    image: ghcr.io/sksahilhaque/real-estate-end-to-end-ci-cd-project:develop
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - NEXT_TELEMETRY_DISABLED=1
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - '80:80'
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+```
+
+## Deployment
+
+### Local Development
+
+```bash
+npm install
+npm run dev
+# Access at http://localhost:3000
+```
+
+### Docker Local Testing
+
+```bash
+# Pull and run the containerized application
+docker pull ghcr.io/sksahilhaque/real-estate-end-to-end-ci-cd-project:develop
+docker-compose up -d
+# Access at http://localhost
+```
+
+### Production Deployment (EC2)
+
+```bash
+# Clone repository
+git clone https://github.com/sksahilhaque/Real-Estate-end-to-end-CI-CD-project.git
+cd Real-Estate-end-to-end-CI-CD-project/premium-realty
+
+# Deploy with Docker Compose
+docker-compose up -d
+# Access at http://YOUR_EC2_PUBLIC_IP
+```
+
+## Infrastructure
+
+### Nginx Configuration
+
+- **Reverse Proxy**: Routes traffic from port 80 to Next.js app on port 3000
+- **Load Balancing**: Ready for horizontal scaling
+- **Security Headers**: Production-ready security configuration
+- **Static File Serving**: Optimized for performance
+
+### Security Features
+
+- **Non-root Container**: Runs with dedicated nextjs user
+- **Minimal Attack Surface**: Alpine Linux base images
+- **Secrets Management**: GitHub secrets for container registry
+- **Vulnerability Scanning**: Automated security checks
+
+## Monitoring & Observability
+
+### Available Commands
+
+```bash
+# Check container status
+docker-compose ps
+
+# View application logs
+docker-compose logs premium-realty
+
+# View nginx logs
+docker-compose logs nginx
+
+# Monitor resource usage
+docker stats
+```
+
+## Branch Strategy
+
+- **main**: Production deployments
+- **develop**: Staging deployments with full CI/CD
+- **feature/\***: Feature development branches
+
+## Environment Configuration
+
+### Production Environment Variables
+
+- `NODE_ENV=production`
+- `PORT=3000`
+- `NEXT_TELEMETRY_DISABLED=1`
+- `HOSTNAME=0.0.0.0`
+
+## Project Status
+
+✅ **Frontend Development**: Complete Next.js application with responsive design  
+✅ **Containerization**: Multi-stage Docker setup with security best practices  
+✅ **CI/CD Pipeline**: Automated testing, building, and deployment  
+✅ **Container Registry**: GitHub Container Registry integration  
+✅ **Reverse Proxy**: Nginx configuration for production deployment  
+✅ **Cloud Deployment**: AWS EC2 deployment with Docker Compose  
+✅ **Security Scanning**: Automated vulnerability detection  
+✅ **Code Quality**: ESLint, Prettier, and TypeScript integration
