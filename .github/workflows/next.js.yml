@@ -86,6 +86,9 @@ jobs:
       - name: Build application
         run: npm run build
 
+      - name: Run tests
+        run: npm test -- --passWithNoTests
+
       - name: Verify build output
         run: ls -la .next/
 
@@ -121,6 +124,16 @@ jobs:
             --build-arg NEXT_TELEMETRY_DISABLED=1 \
             --tag "$TAG" \
             .
+
+      - name: Test Docker image from registry
+        run: |
+          TAG="${{ env.REGISTRY }}/$(echo '${{ env.IMAGE_NAME }}' | tr '[:upper:]' '[:lower:]'):${{ github.ref_name }}"
+          sudo docker rmi "$TAG" || true
+          sudo docker pull "$TAG"
+          sudo docker run --rm -d -p 3000:3000 --name test-app "$TAG"
+          sleep 10
+          curl -f http://localhost:3000 || exit 1
+          sudo docker stop test-app
 
   deploy-staging:
     needs: docker-build-push
