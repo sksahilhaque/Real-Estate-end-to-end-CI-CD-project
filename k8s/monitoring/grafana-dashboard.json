@@ -1,0 +1,43 @@
+{
+  "dashboard": {
+    "title": "Premium Realty Monitoring",
+    "panels": [
+      {
+        "title": "Pod Status",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "kube_pod_status_phase{namespace=\"premium-realty\"}"
+          }
+        ]
+      },
+      {
+        "title": "Pod Restarts",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "kube_pod_container_status_restarts_total{namespace=\"premium-realty\"}"
+          }
+        ]
+      },
+      {
+        "title": "System Load",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "node_load1"
+          }
+        ]
+      },
+      {
+        "title": "Available Memory (GB)",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "node_memory_MemAvailable_bytes / 1024 / 1024 / 1024"
+          }
+        ]
+      }
+    ]
+  }
+}
