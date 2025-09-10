@@ -15,17 +15,23 @@ This project demonstrates the **complete software development lifecycle** from i
 
 ---
 
+## 🏗 Architecture Overview
+
+<img width="956" height="420" alt="Architecture Diagram" src="https://github.com/user-attachments/assets/59ded0d8-3a69-4f06-8825-44c60e24bc5e" />
+
+---
+
 ## 📋 Table of Contents
 
-1. [Application Features](#-application-features)
-2. [Technology Stack](#-technology-stack)
-3. [Development Journey](#-development-journey)
-4. [Architecture Overview](#-architecture-overview)
-5. [Getting Started](#-getting-started)
-6. [Deployment Guide](#-deployment-guide)
-7. [Monitoring & Observability](#-monitoring--observability)
-8. [CI/CD Pipeline](#-cicd-pipeline)
-9. [Security Features](#-security-features)
+1. [Architecture Overview](#-architecture-overview)
+2. [Application Features](#-application-features)
+3. [Technology Stack](#-technology-stack)
+4. [Development Journey](#-development-journey)
+6. [Getting Started](#-getting-started)
+7. [Deployment Guide](#-deployment-guide)
+8. [Monitoring & Observability](#-monitoring--observability)
+9. [CI/CD Pipeline](#-cicd-pipeline)
+10. [Security Features](#-security-features)
 
 ---
 
@@ -123,12 +129,6 @@ This project was built following enterprise development practices, progressing t
 2. **Grafana Dashboards**: Real-time visualization
 3. **System Monitoring**: Node Exporter for infrastructure metrics
 4. **Application Monitoring**: Kubernetes and container metrics
-
----
-
-## 🏗 Architecture Overview
-
-<img width="956" height="420" alt="Architecture Diagram" src="https://github.com/user-attachments/assets/59ded0d8-3a69-4f06-8825-44c60e24bc5e" />
 
 ---
 
