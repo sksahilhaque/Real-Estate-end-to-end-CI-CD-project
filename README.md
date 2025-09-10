@@ -1,12 +1,12 @@
-# Premium Realty - Enterprise-Grade Real Estate Platform
+# Production-Ready Complete DevOps Workflow
 
 🏠 **A complete, production-ready real estate application** built with modern technologies, enterprise DevOps practices, and comprehensive monitoring.
 
 ## 🌟 Project Overview
 
-This project demonstrates the **complete software development lifecycle** from initial development to production deployment, including:
+This project demonstrates the **complete software development lifecycle** from initial development to production ready deployment, including:
 
-- **Modern Frontend Development** (Next.js, React, Tailwind CSS)
+- **Modern Frontend Development** (Next.js, React)
 - **Containerization & Orchestration** (Docker, Kubernetes)
 - **CI/CD Pipeline** (GitHub Actions)
 - **Cloud Deployment** (AWS EC2)
@@ -26,7 +26,6 @@ This project demonstrates the **complete software development lifecycle** from i
 7. [Monitoring & Observability](#-monitoring--observability)
 8. [CI/CD Pipeline](#-cicd-pipeline)
 9. [Security Features](#-security-features)
-10. [Project Structure](#-project-structure)
 
 ---
 
@@ -48,7 +47,6 @@ This project demonstrates the **complete software development lifecycle** from i
 - **Zero-downtime Deployments**: Rolling updates with health checks
 - **Real-time Monitoring**: Comprehensive metrics and alerting
 - **Security Scanning**: Automated vulnerability detection
-- **Infrastructure as Code**: All configurations version-controlled
 
 ---
 
@@ -66,7 +64,6 @@ This project demonstrates the **complete software development lifecycle** from i
 - **Docker**: Containerization platform
 - **Kubernetes**: Container orchestration
 - **Nginx**: Reverse proxy and web server
-- **AWS EC2**: Cloud computing platform
 
 ### DevOps & CI/CD
 - **GitHub Actions**: Automated workflows
@@ -112,7 +109,7 @@ This project was built following enterprise development practices, progressing t
 2. **Quality Gates**: Code linting, formatting, and type checking
 3. **Security Scanning**: Trivy vulnerability detection
 4. **Container Registry**: Automated image building and pushing
-5. **Branch Strategy**: Feature, develop, and main branch workflows
+5. **Branch Strategy**: develop, and main branch workflows
 
 ### Phase 4: Kubernetes Orchestration
 1. **Kubernetes Manifests**: Deployments, Services, Ingress, HPA
@@ -121,55 +118,17 @@ This project was built following enterprise development practices, progressing t
 4. **Auto-scaling**: Horizontal Pod Autoscaler configuration
 5. **Health Checks**: Liveness and readiness probes
 
-### Phase 5: Cloud Deployment
-1. **AWS EC2 Setup**: Cloud infrastructure provisioning
-2. **Production Deployment**: Real-world hosting environment
-3. **Domain Configuration**: External access and DNS setup
-4. **SSL/TLS**: Security certificate implementation (ready)
-
-### Phase 6: Enterprise Monitoring
+### Phase 5: Monitoring
 1. **Prometheus Setup**: Metrics collection and storage
 2. **Grafana Dashboards**: Real-time visualization
 3. **System Monitoring**: Node Exporter for infrastructure metrics
 4. **Application Monitoring**: Kubernetes and container metrics
-5. **Alerting**: Monitoring-based notifications (ready)
 
 ---
 
 ## 🏗 Architecture Overview
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                     Internet Traffic                        │
-└─────────────────────┬───────────────────────────────────────┘
-                      │
-┌─────────────────────▼───────────────────────────────────────┐
-│                 Nginx Ingress                               │
-│            (Load Balancer + SSL)                           │
-└─────────────────────┬───────────────────────────────────────┘
-                      │
-┌─────────────────────▼───────────────────────────────────────┐
-│              Kubernetes Cluster                             │
-│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────┐ │
-│  │   Premium       │  │   Monitoring    │  │   System    │ │
-│  │   Realty Pods   │  │   Stack         │  │   Services  │ │
-│  │                 │  │                 │  │             │ │
-│  │ ┌─────────────┐ │  │ ┌─────────────┐ │  │ ┌─────────┐ │ │
-│  │ │   Next.js   │ │  │ │ Prometheus  │ │  │ │  DNS    │ │ │
-│  │ │   App       │ │  │ │             │ │  │ │         │ │ │
-│  │ └─────────────┘ │  │ └─────────────┘ │  │ └─────────┘ │ │
-│  │ ┌─────────────┐ │  │ ┌─────────────┐ │  │ ┌─────────┐ │ │
-│  │ │   Nginx     │ │  │ │   Grafana   │ │  │ │ Metrics │ │ │
-│  │ │   Proxy     │ │  │ │             │ │  │ │ Server  │ │ │
-│  │ └─────────────┘ │  │ └─────────────┘ │  │ └─────────┘ │ │
-│  └─────────────────┘  └─────────────────┘  └─────────────┘ │
-└─────────────────────────────────────────────────────────────┘
-                      │
-┌─────────────────────▼───────────────────────────────────────┐
-│                 Persistent Storage                          │
-│            (Metrics, Logs, Configurations)                 │
-└─────────────────────────────────────────────────────────────┘
-```
+<img width="956" height="420" alt="Architecture Diagram" src="https://github.com/user-attachments/assets/59ded0d8-3a69-4f06-8825-44c60e24bc5e" />
 
 ---
 
@@ -235,21 +194,6 @@ kubectl get pods -n premium-realty
 kubectl port-forward svc/premium-realty-service 8080:80 -n premium-realty
 open http://localhost:8080
 ```
-
-### AWS EC2 Deployment
-
-```bash
-# On EC2 instance
-git clone https://github.com/sksahilhaque/Real-Estate-end-to-end-CI-CD-project.git
-cd Real-Estate-end-to-end-CI-CD-project/premium-realty
-
-# Deploy with Docker Compose
-docker-compose up -d
-
-# Access via EC2 public IP
-open http://YOUR_EC2_PUBLIC_IP
-```
-
 ---
 
 ## 📊 Monitoring & Observability
@@ -284,7 +228,7 @@ open http://localhost:3001
 
 - **Dashboard ID 315**: Kubernetes Cluster Monitoring
 - **Dashboard ID 1860**: Node Exporter Full
-- **Custom Dashboard**: Premium Realty Application Metrics
+- **Custom Dashboard**: Application Metrics
 
 ---
 
@@ -348,79 +292,10 @@ git push origin main
 - **Security Scanning**: Automated vulnerability detection with Trivy
 - **Minimal Base Images**: Alpine Linux for reduced attack surface
 
-### Kubernetes Security
-- **RBAC**: Role-based access control for service accounts
-- **Network Policies**: Traffic segmentation (ready)
-- **Pod Security Standards**: Security contexts and policies
-- **Secrets Management**: Encrypted configuration storage
-- **Resource Limits**: CPU and memory constraints
-
 ### Application Security
 - **Dependency Scanning**: Regular security audits
 - **Code Quality Gates**: Automated security checks in CI/CD
 - **Environment Isolation**: Separate namespaces for different environments
-- **SSL/TLS Ready**: HTTPS certificate configuration prepared
-
----
-
-## 📁 Project Structure
-
-```
-premium-realty/
-├── 📱 Frontend Application
-│   ├── app/
-│   │   ├── components/          # Reusable UI components
-│   │   ├── data/               # Sample data and configurations
-│   │   ├── properties/         # Property listing pages
-│   │   ├── about/              # About page
-│   │   ├── contact/            # Contact page
-│   │   ├── blog/               # Blog section
-│   │   ├── favorites/          # Favorites functionality
-│   │   ├── layout.js           # Root layout component
-│   │   ├── page.js             # Homepage
-│   │   └── globals.css         # Global styles
-│   ├── public/                 # Static assets
-│   ├── package.json            # Dependencies and scripts
-│   ├── next.config.js          # Next.js configuration
-│   ├── tailwind.config.js      # Tailwind CSS configuration
-│   └── tsconfig.json           # TypeScript configuration
-│
-├── 🐳 Containerization
-│   ├── Dockerfile              # Multi-stage container build
-│   ├── docker-compose.yml      # Local development setup
-│   ├── nginx.conf              # Nginx reverse proxy config
-│   └── .dockerignore           # Docker build exclusions
-│
-├── ⚙️ Kubernetes Manifests
-│   ├── k8s/
-│   │   ├── manifests/
-│   │   │   ├── namespace.yaml      # Application namespace
-│   │   │   ├── deployment.yaml     # Application deployment
-│   │   │   ├── service.yaml        # Load balancer service
-│   │   │   ├── ingress.yaml        # External access
-│   │   │   └── hpa.yaml            # Auto-scaling configuration
-│   │   └── monitoring/
-│   │       ├── prometheus-config.yaml  # Metrics collection config
-│   │       ├── prometheus.yaml         # Prometheus deployment
-│   │       ├── grafana.yaml            # Dashboard service
-│   │       └── grafana-dashboard.json  # Custom dashboard
-│
-├── 🔄 CI/CD Pipeline
-│   ├── .github/
-│   │   └── workflows/
-│   │       └── ci-cd.yml           # GitHub Actions workflow
-│   ├── .husky/                     # Git hooks
-│   └── .prettierignore             # Formatting exclusions
-│
-├── 📋 Documentation
-│   ├── README.md                   # This comprehensive guide
-│   └── .lighthouserc.json          # Performance testing config
-│
-└── ⚙️ Configuration Files
-    ├── .eslintrc.json              # Code linting rules
-    ├── .gitignore                  # Git exclusions
-    └── postcss.config.js           # CSS processing
-```
 
 ---
 
@@ -463,59 +338,6 @@ kubectl describe hpa premium-realty-hpa -n premium-realty
 
 ---
 
-## 🚀 Production Readiness Checklist
-
-### ✅ Development
-- [x] Modern React/Next.js application
-- [x] TypeScript for type safety
-- [x] Responsive design with Tailwind CSS
-- [x] Component-based architecture
-- [x] Code quality tools (ESLint, Prettier)
-
-### ✅ Containerization
-- [x] Multi-stage Dockerfile
-- [x] Security hardening (non-root user)
-- [x] Optimized image size
-- [x] Docker Compose for local development
-- [x] Nginx reverse proxy
-
-### ✅ CI/CD Pipeline
-- [x] Automated testing and quality checks
-- [x] Security vulnerability scanning
-- [x] Container image building and pushing
-- [x] Branch-based deployment strategy
-- [x] GitHub Actions workflow
-
-### ✅ Kubernetes Orchestration
-- [x] Deployment with multiple replicas
-- [x] Service load balancing
-- [x] Ingress for external access
-- [x] Horizontal Pod Autoscaler
-- [x] Health checks and probes
-
-### ✅ Monitoring & Observability
-- [x] Prometheus metrics collection
-- [x] Grafana visualization dashboards
-- [x] System and application monitoring
-- [x] Real-time alerting capabilities
-- [x] Performance tracking
-
-### ✅ Security
-- [x] Container vulnerability scanning
-- [x] RBAC implementation
-- [x] Secure secrets management
-- [x] Network security policies
-- [x] Regular security audits
-
-### ✅ Production Deployment
-- [x] Cloud infrastructure (AWS EC2)
-- [x] Scalable architecture
-- [x] Zero-downtime deployments
-- [x] Backup and recovery procedures
-- [x] Performance optimization
-
----
-
 ## 🎯 Key Achievements
 
 ### Technical Excellence
@@ -526,7 +348,6 @@ kubectl describe hpa premium-realty-hpa -n premium-realty
 
 ### DevOps Maturity
 - **Automation**: Fully automated CI/CD pipeline
-- **Infrastructure as Code**: All configurations version-controlled
 - **Monitoring**: Comprehensive observability stack
 - **Security**: Integrated security scanning and compliance
 
@@ -538,73 +359,6 @@ kubectl describe hpa premium-realty-hpa -n premium-realty
 
 ---
 
-## 🔮 Future Enhancements
-
-### Application Features
-- [ ] **Backend API**: RESTful API with database integration
-- [ ] **User Authentication**: JWT-based user management
-- [ ] **Payment Integration**: Stripe/PayPal for transactions
-- [ ] **Real-time Features**: WebSocket for live updates
-- [ ] **Mobile App**: React Native companion app
-
-### Infrastructure Improvements
-- [ ] **Multi-cloud**: AWS + Azure deployment
-- [ ] **CDN Integration**: CloudFront for global content delivery
-- [ ] **Database**: PostgreSQL with read replicas
-- [ ] **Caching**: Redis for session and data caching
-- [ ] **Message Queue**: RabbitMQ for async processing
-
-### Advanced DevOps
-- [ ] **GitOps**: ArgoCD for declarative deployments
-- [ ] **Service Mesh**: Istio for advanced traffic management
-- [ ] **Chaos Engineering**: Chaos Monkey for resilience testing
-- [ ] **Advanced Monitoring**: Distributed tracing with Jaeger
-- [ ] **Compliance**: SOC2, GDPR compliance automation
-
----
-
-## 👥 Contributing
-
-This project demonstrates enterprise-grade development practices. To contribute:
-
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
-5. **Open** a Pull Request
-
-### Development Guidelines
-- Follow existing code style and conventions
-- Add tests for new features
-- Update documentation as needed
-- Ensure all CI/CD checks pass
-
----
-
-## 📞 Support & Contact
-
-- **Developer**: Sahil Haque
-- **GitHub**: [@sksahilhaque](https://github.com/sksahilhaque)
-- **Project**: [Real Estate CI/CD Project](https://github.com/sksahilhaque/Real-Estate-end-to-end-CI-CD-project)
-
----
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgments
-
-- **Next.js Team** for the amazing React framework
-- **Kubernetes Community** for container orchestration
-- **Prometheus & Grafana** for monitoring solutions
-- **GitHub** for CI/CD platform and container registry
-- **AWS** for cloud infrastructure
-
----
-
-**🎉 Congratulations!** You've successfully built and deployed an enterprise-grade real estate application with modern DevOps practices. This project demonstrates the complete software development lifecycle from development to production monitoring.
-
-**⭐ Star this repository** if you found it helpful for learning modern web development and DevOps practices!
