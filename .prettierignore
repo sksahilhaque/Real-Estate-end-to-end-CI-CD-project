@@ -11,3 +11,5 @@ nginx.conf
 **/*.yml
 cadvisor.yaml
 grafana.yaml
+README.md
+README-COMPLETE.md
